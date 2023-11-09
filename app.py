@@ -1,7 +1,7 @@
 import os
 import json 
 from flask import Flask, request, jsonify, render_template
-import requests
+from urllib import request
 app = Flask(__name__)
 
 # Clés d'authentification
