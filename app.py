@@ -26,6 +26,11 @@ def get_access_token():
     except Exception as e:
         print(f"Error getting access token: {str(e)}")
         return None
+    
+@app.route("/")
+
+def hello_world():
+    return "Hello, world!"
 
 @app.route('/onestep-payment', methods=['POST'])
 def one_step_payment():
