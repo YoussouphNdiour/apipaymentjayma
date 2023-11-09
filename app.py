@@ -3,7 +3,7 @@ import json
 import requests
 from flask import Flask, request, jsonify
 
-app = Flask(__name)
+app = Flask(__name__)
 
 # Clés d'authentification
 CLIENT_ID = "b3ad2ee4-883c-45eb-9844-5ebe656c8399"
