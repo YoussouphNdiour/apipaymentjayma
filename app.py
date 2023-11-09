@@ -12,7 +12,7 @@ CLIENT_ID = "b3ad2ee4-883c-45eb-9844-5ebe656c8399"
 CLIENT_SECRET = "cc441c0c-7af0-463e-bd55-1529cdab0e5d"
 
 # URL du point de terminaison One Step Payment
-PAYMENT_URL = "https://api.orange-sonatel.com/api/eWallet/v1/payments/onestep"
+PAYMENT_URL = "https://api.sandbox.orange-sonatel.com/api/eWallet/v1/payments/onestep"
 
 # URL de l'API Checkout de Wave
 WAVE_CHECKOUT_API_URL = "https://api.wave.com/v1/checkout/sessions"
@@ -24,6 +24,7 @@ def get_access_token():
     response = os.popen(curl_command).read()
     try:
         access_token = json.loads(response).get("access_token")
+        print(access_token)
         return access_token
     except Exception as e:
         print(f"Error getting access token: {str(e)}")
@@ -33,7 +34,7 @@ def get_access_token():
 @app.route("/create-wave-checkout-session", methods=["POST"])
 def create_wave_checkout_session():
     # Obtenir les données du corps de la requête JSON
-    data = request.json
+    data = requests.Response.json()
 
     # # Obtenir un jeton d'accès
     # access_token = get_access_token()
@@ -86,9 +87,11 @@ def hello_world():
 def one_step_payment():
     # Obtenir les données du corps de la requête JSON
     data = request.json
+    print(request)
 
     # Obtenir un jeton d'accès
     access_token = get_access_token()
+    print(access_token)
     if not access_token:
         return jsonify({"error": "Failed to obtain access token"}), 500
 
