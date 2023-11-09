@@ -2,6 +2,7 @@ import os
 import json 
 from flask import Flask, request, jsonify, render_template
 import requests
+
 app = Flask(__name__)
 
 # Clés d'authentification
@@ -32,8 +33,8 @@ def hello_world():
 @app.route('/onestep-payment', methods=['POST'])
 def one_step_payment():
     # Obtenir les données du corps de la requête JSON
-    data = request.json
-
+    data = requests
+    print(requests)
     # Obtenir un jeton d'accès
     access_token = get_access_token()
     print(access_token)
@@ -53,7 +54,7 @@ def one_step_payment():
     if response.status_code == 200:
         return response.json()
     else:
-        return jsonify({"err":"eer"}), response.status_code
+        return jsonify( response), response.status_code
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
